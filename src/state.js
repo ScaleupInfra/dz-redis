@@ -74,7 +74,7 @@ const reducer = (state, action) => {
     case "prepend messages": {
       const messages = [
         ...action.payload.messages,
-        ...state.rooms[action.payload.id].messages,
+        ...(state.rooms[action.payload.id].messages || []),
       ];
       return {
         ...state,
@@ -99,12 +99,7 @@ const reducer = (state, action) => {
           [action.payload.id]: {
             ...state.rooms[action.payload.id],
             lastMessage: action.payload.message,
-            messages: state.rooms[action.payload.id].messages
-              ? [
-                ...state.rooms[action.payload.id].messages,
-                action.payload.message,
-              ]
-              : undefined,
+            messages: [...(state.rooms[action.payload.id].messages ?? []), action.payload.message],
           },
         },
       };

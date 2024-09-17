@@ -25,6 +25,7 @@ export const login = (username, password) => {
     .catch(e => { throw new Error(e.response && e.response.data && e.response.data.message); });
 };
 
+
 export const logOut = () => {
   return axios.post(url('/logout'));
 };
