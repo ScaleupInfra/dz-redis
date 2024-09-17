@@ -1,11 +1,11 @@
 // @ts-check
 import { useEffect, useRef, useState } from "react";
-import { getMe, login, logOut } from "./api";
+import { getMe, login, logOut } from "./api.js";
 import io from "socket.io-client";
-import { parseRoomName } from "./utils";
+import { parseRoomName } from "./utils.js";
 
 /**
- * @param {import('./state').UserEntry} newUser
+ * @param {import('./state.js').UserEntry} newUser
  */
 const updateUser = (newUser, dispatch, infoMessage) => {
   dispatch({ type: "set user", payload: newUser });

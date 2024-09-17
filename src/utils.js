@@ -24,8 +24,8 @@ export const getAvatarByUserAndRoomId = (roomId = "1") => {
   const seed1 = 654;
   const seed2 = 531;
 
-  const uidParsed = +roomId.split(":").pop();
-  let roomIdParsed = +roomId.split(":").reverse().pop();
+  const uidParsed = roomId.split(":").length > 0 ? +roomId.split(":").pop() : 0;
+  let roomIdParsed = +roomId.split(":").reverse()?.pop() || 0;
   if (roomIdParsed < 0) {
     roomIdParsed += 3555;
   }
