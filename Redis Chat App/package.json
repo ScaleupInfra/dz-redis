@@ -18,8 +18,8 @@
     "socket.io": "^3.0.4"
   },
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js"
+    "dev": "nodemon backend/index.js",
+    "start": "node backend/index.js"
   },
   "devDependencies": {
     "@types/socket.io": "^2.1.12",
