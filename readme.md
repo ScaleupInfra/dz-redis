@@ -45,27 +45,31 @@ Modern Web Application: Develop a responsive and dynamic single-page application
 ## Project Structure
 
 ```bash
-e-commerce-app
-├── backend/
-│   ├── order-service/
-│   └──inventory-service/
-├── frontend/
-│   └── react-app/
-├── inventory-ui/
-│   └── react-app/
+real-time-chat-application
+├── Redis-Chat-App/
+│   ├── frontend/
+│   │   ├── build/
+│   │   └── react-app/
+│   ├── backend/
+│   │   ├── config.js
+│   │   ├── demo-data.js
+│   │   ├── index.js
+│   │   ├── redis.js
+│   │   └── util.js
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── repo.json
+│   └── Dockerfile    
 ├── k8s/
-│   ├── order-service.yaml
-│   ├── inventory-service.yaml
-│   ├── kafka.yaml
-│   ├── zookeeper.yaml
-│   ├── inventory-ui.yaml
-│   └── frontend.yaml
+│   ├── chat-app.yaml
+│   └── redis.yaml
+├── recipe.yaml
 └── readme.md
 ```
-1. backend/: Contains Node.js microservices for order and inventory management, along with Kafka producer and consumer.
-2. frontend/: Contains the React SPA for the e-commerce platform.
-3. inventory-ui/: Contains the React SPA for the inventory page.
-4. k8s/: Kubernetes configuration files for deployments, services, and Kafka setup.
+1. Redis-Chat-App/backend/: Contains Node.js microservices for order and inventory management, along with Kafka producer and consumer.
+2. Redis-Chat-App/frontend/: Contains the React SPA for the e-commerce platform.
+3. k8s/: Kubernetes configuration files for deployments, services, and Redis setup.
+4. recipe.yaml: Contains DevZero workspace configuration for creating a self-managed Redis and microservices pods.
 
 ## User Interface
 ### Front-End
@@ -79,14 +83,12 @@ e-commerce-app
 
 Once deployed, you can access the e-commerce application through the provided IP address or domain. The React SPA will communicate with the backend services, which are decoupled using Kafka for message brokering.
 
-## How to Setup Kafka and other microservices in the workspace
+## How to Setup Redis and other microservices in the workspace
 
 1. Create a new workspace in DevZero using the recipe **quickstart-infra**.
-2. Connect to the workspace and create a new namespace `kubectl create namespace dz-kafka`.
-3. Change the context to the new namespace `kubectl config set-context --current --namespace=dz-kafka`.
-4. Clone this repository and go inside the folder `cd dz-kafka`.
+2. Connect to the workspace and create a new namespace `kubectl create namespace dz-redis`.
+3. Change the context to the new namespace `kubectl config set-context --current --namespace=dz-redis`.
+4. Clone this repository and go inside the folder `cd dz-redis`.
 5. Run k8s `kubectl apply -f k8s`.
-6. Foward the port of the frontend deployment with the command `kubectl port-forward --address 0.0.0.0 deployment/frontend 8070:3000`.
+6. Foward the port of the frontend deployment with the command `kubectl port-forward --address 0.0.0.0 deployment/redis-chat-app 8070:4000`.
 7. Access the frontend on the browser: `http://<workspace-name>:8070`
-8. Forward the port of the kafka-ui deployment with the command `kubectl port-forward --address 0.0.0.0 deployment/kafka-ui 8030:8080`.
-9. Access the kafka-ui on `http://<workspace-name>:8030` and navigate to your topic in the UI to get the messages in it.
