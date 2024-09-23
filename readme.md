@@ -75,8 +75,7 @@ real-time-chat-application
 
 ## User Interface
 ### Frontend
-![Normal one-to-one chats](.gitbook/assets/frontend-chat.png)
-![Group chats](.gitbook/assets/frontend-chat-group.png)
+![Real Time Chat](.gitbook/assets/frontend-chat.png)
 
 ## Usage
 
