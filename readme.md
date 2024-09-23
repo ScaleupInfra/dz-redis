@@ -1,3 +1,5 @@
+[![Open in DevZero](https://assets.devzero.io/open-in-devzero.svg)](https://www.devzero.io/dashboard/recipes/new?repo-url=https://github.com/ScaleupInfra/dz-kafka)
+
 # Real-Time Chat Application in DZ Workspace Cluster with Redis
 
 ## Table of Contents
@@ -72,7 +74,7 @@ real-time-chat-application
 4. recipe.yaml: Contains DevZero workspace configuration for creating a self-managed Redis and microservices pods.
 
 ## User Interface
-### Front-End
+### Frontend
 ![](.gitbook/assets/Customer-view-page.png)
 ![](.gitbook/assets/Product-Details-page.png)
 
