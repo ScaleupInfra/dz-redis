@@ -75,11 +75,8 @@ real-time-chat-application
 
 ## User Interface
 ### Frontend
-![](.gitbook/assets/Customer-view-page.png)
-![](.gitbook/assets/Product-Details-page.png)
-
-### Inventory Page
-![](.gitbook/assets/Backend-view.png)
+![Normal one-to-one chats](.gitbook/assets/frontend-chat.png)
+![Group chats](.gitbook/assets/frontend-chat-group.png)
 
 ## Usage
 
