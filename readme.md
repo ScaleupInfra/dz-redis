@@ -42,7 +42,7 @@ Modern Web Application: Develop a responsive and dynamic single-page application
 3. Redis: Facilitates event-driven communication between microservices.
 
 ## Architecture Diagram
-![](.gitbook/assets/dz-kafka-arch.png)
+![](.gitbook/assets/redis-pub-sub-architecture.png)
 
 ## Project Structure
 
