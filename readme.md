@@ -79,7 +79,7 @@ real-time-chat-application
 
 ## Usage
 
-Once deployed, you can access the e-commerce application through the provided IP address or domain. The React SPA will communicate with the backend services, which are decoupled using Kafka for message brokering.
+Once deployed, you can access the real-time chat application through the provided IP address or domain. The React SPA will communicate with the backend services, which are decoupled using Redis for message brokering using the publisher/subscriber model.
 
 ## How to Setup Redis and other microservices in the workspace
 
