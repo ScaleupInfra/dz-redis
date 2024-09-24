@@ -47,24 +47,30 @@ Modern Web Application: Develop a responsive and dynamic single-page application
 ## Project Structure
 
 ```bash
-real-time-chat-application
+Real-Time-Chat-Application
+│
 ├── Redis-Chat-App/
+│   │
 │   ├── frontend/
 │   │   ├── build/
 │   │   └── react-app/
+│   │
 │   ├── backend/
 │   │   ├── config.js
 │   │   ├── demo-data.js
 │   │   ├── index.js
 │   │   ├── redis.js
 │   │   └── util.js
+│   │
 │   ├── package.json
 │   ├── package-lock.json
 │   ├── repo.json
-│   └── Dockerfile    
+│   └── Dockerfile
+│    
 ├── k8s/
 │   ├── chat-app.yaml
 │   └── redis.yaml
+│
 ├── recipe.yaml
 └── readme.md
 ```
