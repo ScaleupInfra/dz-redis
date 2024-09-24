@@ -165,7 +165,7 @@ build:
     # ----------------------------------------
     # Clone the Repository
     - type: git-clone
-      url: https://github.com/ScaleupInfra/dz-kafka
+      url: https://github.com/ScaleupInfra/dz-redis
   
 # Launch Environment
 launch:
