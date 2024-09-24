@@ -1,4 +1,4 @@
-# DevZero Kafka Demo Recipe
+# DevZero Redis Demo Recipe
 version: "3"
 
 # Build Environment
@@ -31,7 +31,7 @@ build:
     # ----------------------------------------
     # Clone the Repository
     - type: git-clone
-      url: https://github.com/ScaleupInfra/dz-kafka
+      url: https://github.com/ScaleupInfra/dz-redis
   
 # Launch Environment
 launch:
