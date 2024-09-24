@@ -1,11 +1,12 @@
 body {
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-size: 13px;
-  color: #495057;
+  color: linear-gradient(to bottom right, #101826, #000000, #1f2835);
 }
 
 .navbar {
   box-shadow: rgba(18, 38, 63, 0.03) 0px 12px 24px 0px;
+  /* background: linear-gradient(to bottom right, #101826, #000000, #1f2835); */
 }
 
 .navbar-brand {
@@ -21,8 +22,8 @@ body {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  padding-bottom: 190px;
   height: 100vh;
+  background: linear-gradient(to bottom right, #101826, #000000, #1f2835); /* Equivalent of bg-gradient-to-br from-gray-900 via-black to-gray-800 */
 }
 
 .form-signin {
@@ -223,7 +224,7 @@ span.pseudo-link:hover {
   font-size: 13px;
   font-weight: 400;
   line-height: 1.5;
-  color: #495057;
+  color: linear-gradient(to bottom right, #101826, #000000, #1f2835);
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ced4da;
