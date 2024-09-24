@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: redis-chat-app
-          image: aryanmohanty/devzeroredis:latest
+          image: anurag772/devzero-redis:latest
           ports:
             - containerPort: 4000
 ---
