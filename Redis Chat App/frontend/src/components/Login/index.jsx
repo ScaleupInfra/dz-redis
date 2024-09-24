@@ -64,7 +64,7 @@ export default function Login({ onLogIn }) {
               borderBottom: '1px solid #4a5568',
             }}
           >
-            <h4 style={{ color: 'white', marginBottom: 20, marginTop: 6 }}>Welcome Back!</h4>
+            <h4 style={{ color: 'white', marginBottom: 20, marginTop: 6 }}>Welcome Back!!</h4>
             <div
               style={{
                 width: "100%",
