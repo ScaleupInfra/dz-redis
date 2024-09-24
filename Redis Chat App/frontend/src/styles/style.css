@@ -6,6 +6,7 @@ body {
 
 .navbar {
   box-shadow: rgba(18, 38, 63, 0.03) 0px 12px 24px 0px;
+  /* background: linear-gradient(to bottom right, #101826, #000000, #1f2835); */
 }
 
 .navbar-brand {
@@ -21,8 +22,8 @@ body {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  padding-bottom: 190px;
   height: 100vh;
+  background: linear-gradient(to bottom right, #101826, #000000, #1f2835); /* Equivalent of bg-gradient-to-br from-gray-900 via-black to-gray-800 */
 }
 
 .form-signin {

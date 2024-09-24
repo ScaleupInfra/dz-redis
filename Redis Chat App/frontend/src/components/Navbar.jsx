@@ -16,7 +16,7 @@ const Navbar = () => {
     getButtonLinks().then(setLinks);
   }, []);
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white">
+    <nav className="navbar navbar-expand-lg navbar-light">
       <span className="navbar-brand">Redis chat demo</span>
       {links !== null ? (
         <span className="navbar-text">
