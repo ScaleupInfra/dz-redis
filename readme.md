@@ -179,7 +179,11 @@ launch:
           cd dz-redis
           kubectl apply -f k8s
         else
-          echo "Namespace dz-redis already exists. Skipping steps."
+          echo "Namespace dz-redis already exists. Creating alternate namespace."
+          kubectl create namespace dz-redis-copy
+          kubectl config set-context --current --namespace=dz-redis-copy
+          cd dz-redis
+          kubectl apply -f k8s
         fi
     # END
 ```
