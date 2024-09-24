@@ -1,3 +1,5 @@
+[![Open in DevZero](https://assets.devzero.io/open-in-devzero.svg)](https://www.devzero.io/dashboard/recipes/new?repo-url=https://github.com/ScaleupInfra/dz-redis)
+
 # Real-Time Chat Application in DZ Workspace Cluster with Redis
 
 ## Table of Contents
@@ -40,29 +42,35 @@ Modern Web Application: Develop a responsive and dynamic single-page application
 3. Redis: Facilitates event-driven communication between microservices.
 
 ## Architecture Diagram
-![](.gitbook/assets/dz-kafka-arch.png)
+![](.gitbook/assets/redis-architecture.png)
 
 ## Project Structure
 
 ```bash
-real-time-chat-application
+Real-Time-Chat-Application
+│
 ├── Redis-Chat-App/
+│   │
 │   ├── frontend/
 │   │   ├── build/
 │   │   └── react-app/
+│   │
 │   ├── backend/
 │   │   ├── config.js
 │   │   ├── demo-data.js
 │   │   ├── index.js
 │   │   ├── redis.js
 │   │   └── util.js
+│   │
 │   ├── package.json
 │   ├── package-lock.json
 │   ├── repo.json
-│   └── Dockerfile    
+│   └── Dockerfile
+│    
 ├── k8s/
 │   ├── chat-app.yaml
 │   └── redis.yaml
+│
 ├── recipe.yaml
 └── readme.md
 ```
@@ -72,23 +80,110 @@ real-time-chat-application
 4. recipe.yaml: Contains DevZero workspace configuration for creating a self-managed Redis and microservices pods.
 
 ## User Interface
-### Front-End
-![](.gitbook/assets/Customer-view-page.png)
-![](.gitbook/assets/Product-Details-page.png)
-
-### Inventory Page
-![](.gitbook/assets/Backend-view.png)
+### Frontend
+![Real Time Chat](.gitbook/assets/frontend-chat.png)
 
 ## Usage
 
-Once deployed, you can access the e-commerce application through the provided IP address or domain. The React SPA will communicate with the backend services, which are decoupled using Kafka for message brokering.
+Once deployed, you can access the real-time chat application through the provided IP address or domain. The React SPA will communicate with the backend services, which are decoupled using Redis for message brokering using the publisher/subscriber model.
 
 ## How to Setup Redis and other microservices in the workspace
 
 1. Create a new workspace in DevZero using the recipe **quickstart-infra**.
-2. Connect to the workspace and create a new namespace `kubectl create namespace dz-redis`.
-3. Change the context to the new namespace `kubectl config set-context --current --namespace=dz-redis`.
-4. Clone this repository and go inside the folder `cd dz-redis`.
-5. Run k8s `kubectl apply -f k8s`.
-6. Foward the port of the frontend deployment with the command `kubectl port-forward --address 0.0.0.0 deployment/redis-chat-app 8070:4000`.
-7. Access the frontend on the browser: `http://<workspace-name>:8070`
+2. Connect to the workspace and create a new namespace:
+
+    ```
+    kubectl create namespace dz-redis
+    ```
+
+3. Change the context to the new namespace:
+
+    ```
+    kubectl config set-context --current --namespace=dz-redis
+    ```
+
+4. Clone this [repository](https://github.com/ScaleupInfra/dz-redis) and navigate to the folder:
+
+    ```
+    cd dz-redis
+    ```
+
+5. Run the kubernetes manifest files:
+
+    ```
+    kubectl apply -f k8s
+    ```
+
+6. Foward the port of the frontend deployment with the command:
+    ```
+    kubectl port-forward --address 0.0.0.0 deployment/redis-chat-app 8070:4000
+    ```
+
+7. Access the application on your browser by using the following link:
+
+    ```
+    http://<devzero-workspace-name>:8070
+    ```
+
+    > Replace the placeholder with your workspace name.
+
+## Recipe
+
+Use the following `recipe` configuration to create your own workspace.
+
+``` yaml
+# DevZero Redis Demo Chat Application Recipe
+version: "3"
+
+# Build Environment
+build:
+  steps:
+    # Install Starter Packages
+    - type: apt-get
+      packages: ["build-essential", "curl", "git", "nano", "software-properties-common", "ssh", "sudo", "tar", "unzip", "vim", "wget", "zip"]
+    # END
+    # ----------------------------------------
+    # Install Kubectl CLI tool
+    - type: apt-get
+      packages: ["curl"]
+    - type: command
+      command: |-
+        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+        install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && rm kubectl
+      user: root
+    # END
+    # ----------------------------------------
+    # Install Nodejs
+    - type: command
+      command: |-
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+        export NVM_DIR=$HOME/.nvm && [ -s $NVM_DIR/nvm.sh ] && \. $NVM_DIR/nvm.sh
+        nvm install 21.0.0
+      directory: /home/devzero
+      user: devzero
+    # END
+    # ----------------------------------------
+    # Clone the Repository
+    - type: git-clone
+      url: https://github.com/ScaleupInfra/dz-redis
+  
+# Launch Environment
+launch:
+  steps:
+    # Create the Namespace and apply the manifest files
+    - type: command
+      command: |
+        if ! kubectl get ns dz-redis >/dev/null 2>&1; then
+          kubectl create namespace dz-redis
+          kubectl config set-context --current --namespace=dz-redis
+          cd dz-redis
+          kubectl apply -f k8s
+        else
+          echo "Namespace dz-redis already exists. Creating alternate namespace."
+          kubectl create namespace dz-redis-copy
+          kubectl config set-context --current --namespace=dz-redis-copy
+          cd dz-redis
+          kubectl apply -f k8s
+        fi
+    # END
+```
