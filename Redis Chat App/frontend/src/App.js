@@ -35,7 +35,7 @@ const App = () => {
           backgroundColor: !showLogin ? "#495057" : undefined,
         }}
       >
-        <Navbar />
+        {/* <Navbar /> */}
         {showLogin ? (
           <Login onLogIn={onLogIn} />
         ) : (
