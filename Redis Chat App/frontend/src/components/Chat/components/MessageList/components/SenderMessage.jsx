@@ -8,7 +8,7 @@ const SenderMessage = ({
   user,
   message = "Lorem ipsum dolor...",
   date,
-  onUserClicked,
+  onUserClicked,  
 }) => (
   <div className="d-flex">
     <div style={{ width: "50%" }} className="text-left mb-4">
