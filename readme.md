@@ -42,7 +42,7 @@ Modern Web Application: Develop a responsive and dynamic single-page application
 3. Redis: Facilitates event-driven communication between microservices.
 
 ## Architecture Diagram
-![](.gitbook/assets/redis-architecture.png)
+![](.gitbook/assets/devzero-redis-architecture.png)
 
 ## Project Structure
 
