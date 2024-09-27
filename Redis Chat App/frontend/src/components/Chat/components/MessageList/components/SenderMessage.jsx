@@ -8,7 +8,7 @@ const SenderMessage = ({
   user,
   message = "Lorem ipsum dolor...",
   date,
-  onUserClicked,  
+  onUserClicked,
 }) => (
   <div className="d-flex">
     <div style={{ width: "50%" }} className="text-left mb-4">
@@ -28,8 +28,11 @@ const SenderMessage = ({
                 onClick={onUserClicked}
               >
                 {user.username}
+              </div >
+              <div style={{ marginLeft: '5px' }}>
+                <OnlineIndicator width={7} height={7} online={user.online} />
               </div>
-              <OnlineIndicator width={7} height={7} online={user.online} />
+
             </div>
           )}
           <p className="text-left">{message}</p>
