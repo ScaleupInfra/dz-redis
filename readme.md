@@ -81,7 +81,8 @@ Real-Time-Chat-Application
 
 ## User Interface
 ### Frontend
-![Real Time Chat](.gitbook/assets/frontend-chat.png)
+![Login View](.gitbook/assets/dz-redis-image-1.png)
+![Real Time Chat View](.gitbook/assets/dz-redis-image-2.png)
 
 ## Usage
 
